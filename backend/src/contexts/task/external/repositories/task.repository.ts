@@ -14,6 +14,10 @@ export class TaskRepository implements ITaskRepository {
     return await this.taskCollection.save(insertedInvoice);
   }
 
+  async list(): Promise<TaskModel[]> {
+    return this.taskCollection.find();
+  }
+
   async update(data: TaskModel): Promise<TaskModel> {
     return await this.taskCollection.save({
       ...data,
