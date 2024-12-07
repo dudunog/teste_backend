@@ -24,7 +24,7 @@ export class TaskRepository implements ITaskRepository {
     });
   }
 
-  async delete(data: TaskModel): Promise<void> {
-    await this.taskCollection.delete(data.id);
+  async delete(id: string): Promise<void> {
+    await this.taskCollection.delete(id);
   }
 }

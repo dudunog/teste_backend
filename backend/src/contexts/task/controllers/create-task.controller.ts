@@ -1,7 +1,7 @@
 import { badRequest, ok, serverError } from "@shared/helpers/http-helper";
 import { Controller, HttpRequest, HttpResponse } from "@shared/protocols";
 import { IValidation } from "@shared/protocols/validation";
-import { ICreateTaskUseCase } from "../usecases/_ports/create-task-usecase.struct";
+import { ICreateTaskUseCase } from "@contexts/task/usecases/_ports/create-task-usecase.struct";
 
 export class CreateTaskController implements Controller {
   constructor(

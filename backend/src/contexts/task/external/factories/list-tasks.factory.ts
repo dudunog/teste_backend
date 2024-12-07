@@ -1,7 +1,7 @@
 import { ListTasksController } from "@contexts/task/controllers/list-tasks.controller";
 import { ListTasksUseCase } from "@contexts/task/usecases/list-tasks.usecase";
 import { Controller } from "@shared/protocols";
-import { TaskRepository } from "../repositories/task.repository";
+import { TaskRepository } from "@contexts/task/external/repositories/task.repository";
 import { makeListTasksValidationFactory } from "./list-tasks-validation.factory";
 
 export const makeListTasksFactory = (): Controller => {

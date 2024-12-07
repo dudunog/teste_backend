@@ -1,7 +1,7 @@
 import { badRequest, ok, serverError } from "@shared/helpers/http-helper";
 import { Controller, HttpRequest, HttpResponse } from "@shared/protocols";
 import { IValidation } from "@shared/protocols/validation";
-import { IListTasksUseCase } from "../usecases/_ports/list-tasks-usecase.struct";
+import { IListTasksUseCase } from "@contexts/task/usecases/_ports/list-tasks-usecase.struct";
 
 export class ListTasksController implements Controller {
   constructor(
