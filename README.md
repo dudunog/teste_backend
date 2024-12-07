@@ -39,7 +39,7 @@ Desenvolver uma aplicação utilizando **Node.js** e **React.js**.
 
 ## **Prazo Final**
 
-O prazo para entrega do desafio é **terça-feira, 10 de dezembro, às 17h**.
+O prazo para entrega do desafio é **segunda-feira, 9 de dezembro, às 19h**.
 
 ---
 
