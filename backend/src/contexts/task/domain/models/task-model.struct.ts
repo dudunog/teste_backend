@@ -2,7 +2,7 @@ export interface TaskModel {
   id: string;
   title: string;
   description?: string;
-  completed: boolean;
+  completed?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
