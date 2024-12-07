@@ -44,11 +44,11 @@ const Environment: IEnvironment = {
     },
     database: {
       postgresql: {
-        host: process.env.POSTGRESQL_DATABASE_HOST || "localhost",
-        port: Number(process.env.POSTGRESQL_DATABASE_PORT) || 5438,
-        user: process.env.POSTGRESQL_DATABASE_USER || "development",
-        password: process.env.POSTGRESQL_DATABASE_PASSWORD || "",
-        database: process.env.POSTGRESQL_DATABASE_NAME || "contratadb",
+        host: process.env.POSTGRES_HOST || "localhost",
+        port: Number(process.env.POSTGRES_PORT) || 5438,
+        user: process.env.POSTGRES_USER || "development",
+        password: process.env.POSTGRES_PASSWORD || "",
+        database: process.env.POSTGRES_DB || "tasksdb",
       },
     },
   },
