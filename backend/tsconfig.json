@@ -26,5 +26,5 @@
     "sourceMap": true,
     "typeRoots": ["./src/main/types", "./node_modules/@types"],
   },
-  "include": ["src/**/*", "jest.config.js", "src/shared/views/*.hbs"]
+  "include": ["src/**/*", "jest.config.js"]
 }
