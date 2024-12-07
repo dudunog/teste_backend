@@ -36,3 +36,20 @@ Desenvolver uma aplicação utilizando **Node.js** e **React.js**.
    - Implementação de testes unitários para validação do código.
 
 ---
+
+## **Prazo Final**
+
+O prazo para entrega do desafio é **terça-feira, 10 de dezembro, às 17h**.
+
+---
+
+## **Instruções de Entrega**
+
+1. Faça um **pull request** no Git relacionado à tarefa do desafio.
+2. Envie um e-mail para **tecnico@redizz.com.br** com as seguintes informações:
+   - Comunicado de que o projeto foi finalizado.
+   - Um link de um vídeo hospedado no **YouTube** (opção **não listado**) contendo:
+     - Explicação sobre o código desenvolvido.
+     - Demonstração do software em operação.
+
+Boa sorte e sucesso no desenvolvimento!
