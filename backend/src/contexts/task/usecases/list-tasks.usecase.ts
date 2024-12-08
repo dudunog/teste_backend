@@ -8,7 +8,11 @@ export class ListTasksUseCase implements IListTasksUseCase {
   constructor(private readonly taskRepository: ITaskRepository) {}
 
   async execute(): Promise<Result<CreationModel<TaskModel[]>>> {
-    const tasks = await this.taskRepository.list();
+    const tasks = await this.taskRepository.list({
+      order: {
+        completed: "DESC",
+      },
+    });
 
     return Result.ok(tasks);
   }

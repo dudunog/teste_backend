@@ -3,6 +3,7 @@ import { ITaskRepository } from "@contexts/task/usecases/_ports/repositories/tas
 import { CreationModel } from "@shared/protocols/creation-model";
 import { TaskModel } from "../../domain/models/task-model.struct";
 import { TaskEntity } from "../entities/task-entity";
+import { FindManyOptions } from "typeorm";
 
 export class TaskRepository implements ITaskRepository {
   constructor(
@@ -14,8 +15,8 @@ export class TaskRepository implements ITaskRepository {
     return await this.taskCollection.save(insertedInvoice);
   }
 
-  async list(): Promise<TaskModel[]> {
-    return this.taskCollection.find();
+  async list(options: FindManyOptions<TaskEntity>): Promise<TaskModel[]> {
+    return this.taskCollection.find(options);
   }
 
   async update(data: TaskModel): Promise<TaskModel> {
