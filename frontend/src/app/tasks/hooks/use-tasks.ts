@@ -9,6 +9,8 @@ type CreateTaskDTO = {
   description: string;
 };
 
+type UpdateTaskDTO = Task;
+
 export function useTasks() {
   const { toast } = useToast();
 
@@ -33,7 +35,29 @@ export function useTasks() {
     }
   }
 
+  async function updateTask(
+    taskData: UpdateTaskDTO
+  ): Promise<Task | undefined> {
+    try {
+      const response = await api(`/task/${taskData.id}/update`, {
+        method: "PUT",
+        body: JSON.stringify(taskData),
+      });
+
+      return await response.json();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        description: "Erro ao atualizar tarefa",
+        duration: 3000,
+      });
+
+      console.error(error);
+    }
+  }
+
   return {
     createTask,
+    updateTask,
   };
 }
