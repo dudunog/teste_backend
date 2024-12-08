@@ -14,6 +14,10 @@ export class ListRepository implements IListRepository {
     return await this.listCollection.save(insertedInvoice);
   }
 
+  async list(): Promise<ListModel[]> {
+    return this.listCollection.find();
+  }
+
   async update(data: ListModel): Promise<ListModel> {
     return await this.listCollection.save({
       ...data,
