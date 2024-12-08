@@ -1,8 +1,10 @@
+import { ListEntity } from "../../../list/external/entities/list-entity";
 import { TaskModel } from "../../domain/models/task-model.struct";
 import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -20,6 +22,9 @@ export class TaskEntity implements TaskModel {
 
   @Column({ default: false })
   completed: boolean;
+
+  @ManyToOne(() => ListEntity, (list) => list.tasks)
+  list: ListEntity;
 
   @CreateDateColumn()
   createdAt: Date;

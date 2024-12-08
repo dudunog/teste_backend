@@ -4,8 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -18,8 +17,7 @@ export class ListEntity implements ListModel {
   @Column()
   title: string;
 
-  @ManyToMany(() => TaskEntity)
-  @JoinTable()
+  @OneToMany(() => TaskEntity, (entity) => entity.list)
   tasks: TaskEntity[];
 
   @CreateDateColumn()
