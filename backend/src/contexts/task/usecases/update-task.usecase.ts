@@ -14,12 +14,14 @@ export class UpdateTaskUseCase implements IUpdateTaskUseCase {
     title,
     description,
     completed,
+    listId,
   }: IUpdateTaskUseCaseDTO): Promise<Result<TaskModel>> {
     const task = await this.taskRepository.update({
       id,
       title,
       description,
       completed,
+      listId,
     });
 
     return Result.ok(task);

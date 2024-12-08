@@ -6,6 +6,7 @@ export interface IUpdateTaskUseCaseDTO {
   title: string;
   description: string;
   completed: boolean;
+  listId?: string;
 }
 
 export type IUpdateTaskUseCase = UseCase<IUpdateTaskUseCaseDTO, TaskModel>;

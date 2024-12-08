@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -23,7 +24,11 @@ export class TaskEntity implements TaskModel {
   @Column({ default: false })
   completed: boolean;
 
-  @ManyToOne(() => ListEntity, (list) => list.tasks)
+  @Column({ nullable: true })
+  listId: string;
+
+  @ManyToOne(() => ListEntity, (list) => list.id)
+  @JoinColumn({ name: "listId" })
   list: ListEntity;
 
   @CreateDateColumn()

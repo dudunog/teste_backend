@@ -12,10 +12,12 @@ export class CreateTaskUseCase implements ICreateTaskUseCase {
   async execute({
     title,
     description,
+    listId,
   }: ICreateTaskUseCaseDTO): Promise<Result<TaskModel>> {
     const task = await this.taskRepository.create({
       title,
       description,
+      listId,
     });
     return Result.ok(task);
   }
