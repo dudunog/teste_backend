@@ -11,9 +11,9 @@ interface TaskProps {
 }
 
 export default function Task({ data }: TaskProps) {
+  const [isChecked, setIsChecked] = useState(false);
   const { setNodeRef, attributes, listeners, transition, transform } =
     useSortable({ id: data.id });
-  const [isChecked, setIsChecked] = useState(false);
 
   const style = {
     transition,

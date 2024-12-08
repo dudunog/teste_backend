@@ -1,6 +1,7 @@
 import { Task } from "./data/task";
 import { api } from "@/data/api";
 import TasksList from "./components/tasks-list";
+import NewTaskFoatingButton from "./components/new-task-floating-button";
 
 async function getTasks(): Promise<Task[]> {
   const response = await api("/task/list");
@@ -15,6 +16,8 @@ export default async function Tasks() {
       <h1 className="text-3xl">Tarefas</h1>
 
       <TasksList tasks={tasks} />
+
+      <NewTaskFoatingButton />
     </>
   );
 }

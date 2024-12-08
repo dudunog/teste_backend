@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Toaster } from "@/components/ui/toaster";
+
 import "./globals.css";
 
 const geistSans = localFont({
@@ -29,8 +32,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="flex flex-col items-center w-full p-4">
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
         </main>
+
+        <Toaster />
       </body>
     </html>
   );
