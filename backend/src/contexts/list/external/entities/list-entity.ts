@@ -1,5 +1,5 @@
 import { ListModel } from "@contexts/list/domain/models/list-model.struct";
-import { TaskEntity } from "@contexts/task/external/entities/task-entity";
+import { TaskEntity } from "../../../task/external/entities/task-entity";
 import {
   Column,
   CreateDateColumn,
