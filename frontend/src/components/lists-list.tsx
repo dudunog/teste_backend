@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useAdminContext } from "@/app/tasks/contexts/admin-contexts";
-import { cn } from "@/lib/utils";
-import { House } from "lucide-react";
+import { useAdminContext } from "@/app/tasks/contexts/admin-context";
 import { List } from "@/app/tasks/data/list";
+import { cn } from "@/lib/utils";
 
 interface ListsListProps {
   lists: List[];
@@ -21,13 +20,13 @@ export default function ListsList({ lists }: ListsListProps) {
         <Link key={list.id} href={list.slug}>
           <div
             className={cn(
-              "p-2 py-3 flex items-center justify-between gap-2 rounded-lg cursor-pointer ",
+              "p-2 py-3 flex items-center justify-between gap-2 rounded-lg cursor-pointer transition-all duration-300 hover:bg-[#F6F6F6]",
               list.slug === slug && "bg-[#F6F6F6]",
               isSidebarCollapsed && "justify-center"
             )}
           >
             <div className="flex items-center gap-2">
-              <House size={22} />
+              <div className="text-2xl">{list.emoji}</div>
               {!isSidebarCollapsed && <p>{list.title}</p>}
             </div>
             {!isSidebarCollapsed && (

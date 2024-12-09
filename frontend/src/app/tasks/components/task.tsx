@@ -42,7 +42,7 @@ export default function Task({ data }: TaskProps) {
     <div
       key={data.id}
       ref={setNodeRef}
-      className="bg-[#F5F5F5] flex items-center gap-3 p-3 rounded-xl w-72"
+      className="bg-[#F5F5F5] flex items-center gap-3 p-3 rounded-xl w-[450px]"
       style={style}
       {...attributes}
       {...listeners}

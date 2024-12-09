@@ -6,7 +6,6 @@ import { useToast } from "@/hooks/use-toast";
 
 type CreateTaskDTO = {
   title: string;
-  description: string;
 };
 
 type UpdateTaskDTO = Task;

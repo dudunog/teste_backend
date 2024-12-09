@@ -31,6 +31,7 @@ interface TasksListProps {
 
 export default function TasksList({ tasks }: TasksListProps) {
   const [tasksState, setTasksState] = useState(tasks);
+  const [isDoneFilterActive, setIsDoneFilterActive] = useState(false);
   const { newTaskId } = useTasksSearch();
 
   const sensors = useSensors(
@@ -64,8 +65,10 @@ export default function TasksList({ tasks }: TasksListProps) {
     (checked: boolean) => {
       if (checked) {
         setTasksState(tasks.filter((task) => task.completed));
+        setIsDoneFilterActive(true);
       } else {
         setTasksState(tasks);
+        setIsDoneFilterActive(false);
       }
     },
     [tasks]
@@ -77,10 +80,15 @@ export default function TasksList({ tasks }: TasksListProps) {
 
   return (
     <>
-      <div className="mt-6 flex items-center w-72 justify-end space-x-2">
+      <div className="mt-6 flex items-center w-[450px] justify-end space-x-2">
         <Switch onCheckedChange={handleCheckedChange}>Completed</Switch>
         <Label>Finalizadas</Label>
       </div>
+
+      {isDoneFilterActive && tasksState.length === 0 && (
+        <p className="mt-16">Nenhuma tarefa concluída até o momento</p>
+      )}
+
       <DndContext
         collisionDetection={closestCorners}
         onDragEnd={handleDragEnd}
@@ -91,7 +99,7 @@ export default function TasksList({ tasks }: TasksListProps) {
           strategy={verticalListSortingStrategy}
         >
           <AnimatePresence>
-            <ScrollArea className="mt-2 h-[500px] bg-white rounded-2xl">
+            <ScrollArea className="mt-2 h-[500px] rounded-2xl">
               <div className="flex flex-col gap-3 px-3 py-3">
                 {tasksState.map((task) => (
                   <>

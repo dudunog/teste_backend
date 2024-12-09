@@ -1,8 +1,9 @@
 "use client";
 
-import { useAdminContext } from "@/app/tasks/contexts/admin-contexts";
+import { useAdminContext } from "@/app/tasks/contexts/admin-context";
 import ListsList from "@/components/lists-list";
 import { List } from "@/app/tasks/data/list";
+import { ScrollArea } from "./ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -33,7 +34,9 @@ export default function LeftSideBar({ lists }: LeftSideBarProps) {
               <h1 className="font-semibold text-lg">Listas</h1>
             </div>
             <div className="flex-1">
-              <ListsList lists={lists} />
+              <ScrollArea className="h-screen">
+                <ListsList lists={lists} />
+              </ScrollArea>
             </div>
           </div>
 

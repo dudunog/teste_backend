@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useAdminContext } from "@/app/tasks/contexts/admin-contexts";
+import { useAdminContext } from "@/app/tasks/contexts/admin-context";
 import AppHeader from "@/components/app-header";
 
 type AdminLayoutClientProps = {
