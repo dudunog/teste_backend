@@ -9,7 +9,7 @@ type ParamsProps = {
 
 export async function PUT(req: Request, { params }: ParamsProps) {
   const body = await req.json();
-  const taskIdParam = params.id;
+  const { id: taskIdParam } = await params;
 
   try {
     const { taskId, title, description, completed } = z

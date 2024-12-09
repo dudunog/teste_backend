@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function Home() {
-  return redirect("/tasks");
+  return redirect("/tasks/home");
 }

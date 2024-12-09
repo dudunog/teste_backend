@@ -1,7 +1,7 @@
-import { Task } from "./data/task";
+import { Task } from "@/app/tasks/data/task";
 import { api } from "@/data/api";
-import TasksList from "./components/tasks-list";
-import NewTaskFoatingButton from "./components/new-task-floating-button";
+import TasksList from "@/app/tasks/components/tasks-list";
+import NewTaskFloatingButton from "@/app/tasks/components/new-task-floating-button";
 
 async function getTasks(): Promise<Task[]> {
   const response = await api("/task/list");
@@ -13,11 +13,11 @@ export default async function Tasks() {
 
   return (
     <>
-      <h1 className="text-3xl">Tarefas</h1>
+      <h1 className="mt-10 text-3xl">Minhas tarefas</h1>
 
       <TasksList tasks={tasks} />
 
-      <NewTaskFoatingButton />
+      <NewTaskFloatingButton />
     </>
   );
 }

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "@/components/ui/toaster";
+import LeftSideBarServer from "@/components/left-sidebar-server";
+import { AdminProvider } from "@/app/tasks/contexts/admin-contexts";
+import LayoutClient from "./layout-client";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "./globals.css";
 
@@ -31,11 +34,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="flex flex-col items-center w-full p-4">
-          <NuqsAdapter>{children}</NuqsAdapter>
-        </main>
+        <AdminProvider>
+          <LeftSideBarServer />
 
-        <Toaster />
+          <LayoutClient>
+            <main className={"flex flex-col items-center w-full p-4"}>
+              <NuqsAdapter>{children}</NuqsAdapter>
+            </main>
+
+            <Toaster />
+          </LayoutClient>
+        </AdminProvider>
       </body>
     </html>
   );

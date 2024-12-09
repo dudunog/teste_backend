@@ -1,24 +1,28 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTasks } from "@/app/tasks/hooks/use-tasks";
 import { newTaskFormSchema } from "@/app/tasks/data/new-task-form-schema";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import useTasksSearch from "@/app/tasks/hooks/use-tasks-search";
+import { useAdminContext } from "@/app/tasks/contexts/admin-contexts";
+import { cn } from "@/lib/utils";
 import { Plus, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
-import useTasksSearch from "../hooks/use-tasks-search";
 
-export default function NewTaskFoatingButton() {
+export default function NewTaskFloatingButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const { isSidebarCollapsed } = useAdminContext();
   const { setNewTaskId } = useTasksSearch();
   const { createTask } = useTasks();
+  const { slug } = useParams();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof newTaskFormSchema>>({
@@ -33,7 +37,7 @@ export default function NewTaskFoatingButton() {
     startTransition(async () => {
       const response = await createTask(values);
 
-      router.push(`/tasks?nTid=${response?.id}`);
+      router.push(`/tasks/${slug}/?nTid=${response?.id}`);
     });
 
     setTimeout(() => {
@@ -91,7 +95,10 @@ export default function NewTaskFoatingButton() {
         </AnimatePresence>
       </div>
       <div
-        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-96 p-4 flex items-center gap-2 bg-black text-white rounded-full font-light text-sm cursor-pointer"
+        className={cn(
+          "fixed bottom-8  transform -translate-x-1/2 w-96 p-4 flex items-center gap-2 bg-black text-white rounded-full font-light text-sm cursor-pointer",
+          isSidebarCollapsed && "ml-[320px]"
+        )}
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X size={15} /> : <Plus size={15} />}

@@ -1,13 +1,13 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { type Task } from "@/app/tasks/data/task";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { useTasks } from "@/app/tasks/hooks/use-tasks";
 import { CheckedState } from "@radix-ui/react-checkbox";
-import { useTasks } from "../hooks/use-tasks";
-import { useRouter } from "next/navigation";
+import { CSS } from "@dnd-kit/utilities";
+import { useSortable } from "@dnd-kit/sortable";
 
 interface TaskProps {
   data: Task;
@@ -24,16 +24,19 @@ export default function Task({ data }: TaskProps) {
     transform: CSS.Transform.toString(transform),
   };
 
-  const handleCheckedChange = useCallback((checked: CheckedState) => {
-    const newState = checked ? true : false;
+  const handleCheckedChange = useCallback(
+    (checked: CheckedState) => {
+      const newState = checked ? true : false;
 
-    updateTask({
-      ...data,
-      completed: newState,
-    });
+      updateTask({
+        ...data,
+        completed: newState,
+      });
 
-    router.refresh();
-  }, []);
+      router.refresh();
+    },
+    [data, updateTask, router]
+  );
 
   return (
     <div
@@ -48,8 +51,9 @@ export default function Task({ data }: TaskProps) {
         checked={data.completed}
         onCheckedChange={(checked) => handleCheckedChange(checked)}
         onPointerDown={(e) => e.stopPropagation()}
+        className=" h-5 w-5"
       />
-      <p>{data.completed ? <del>{data.title}</del> : <p>{data.title}</p>}</p>
+      {data.completed ? <del>{data.title}</del> : <p>{data.title}</p>}
     </div>
   );
 }
