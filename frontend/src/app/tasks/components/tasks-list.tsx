@@ -80,13 +80,19 @@ export default function TasksList({ tasks }: TasksListProps) {
 
   return (
     <>
-      <div className="mt-6 flex items-center w-[450px] justify-end space-x-2">
-        <Switch onCheckedChange={handleCheckedChange}>Completed</Switch>
-        <Label>Finalizadas</Label>
-      </div>
+      {tasksState.length > 0 && (
+        <div className="mt-6 flex items-center w-[450px] justify-end space-x-2">
+          <Switch onCheckedChange={handleCheckedChange}>Completed</Switch>
+          <Label>Finalizadas</Label>
+        </div>
+      )}
 
       {isDoneFilterActive && tasksState.length === 0 && (
-        <p className="mt-16">Nenhuma tarefa concluída até o momento</p>
+        <p className="mt-16">Nenhuma tarefa concluída até o momento.</p>
+      )}
+
+      {tasksState.length === 0 && (
+        <p className="mt-16">Nenhum tarefa cadastrada até o momento.</p>
       )}
 
       <DndContext

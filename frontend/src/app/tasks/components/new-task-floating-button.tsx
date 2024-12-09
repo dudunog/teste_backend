@@ -133,20 +133,6 @@ export default function NewTaskFloatingButton() {
     [form]
   );
 
-  // const onKeyDownList = useCallback(
-  //   async (event: React.KeyboardEvent<HTMLInputElement>) => {
-  //     if (event.key === "Enter") {
-  //       const isValid = await form.trigger();
-
-  //       if (isValid) {
-  //         console.log("Formulário válido!");
-  //         return;
-  //       }
-  //     }
-  //   },
-  //   [form]
-  // );
-
   const onTabsValueChange = useCallback(
     (value: string) => {
       if (value === "color") {
@@ -201,7 +187,6 @@ export default function NewTaskFloatingButton() {
                                         )}
                                       </div>
                                     }
-                                    // onKeyDown={onKeyDownList}
                                     {...field}
                                   />
                                 </FormControl>

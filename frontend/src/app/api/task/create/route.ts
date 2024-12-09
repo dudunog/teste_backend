@@ -5,14 +5,16 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   try {
-    const { title, description } = z
+    const { title, description, listId } = z
       .object({
         title: z.string(),
         description: z.string(),
+        listId: z.string(),
       })
       .parse({
         title: body.title,
         description: body.description,
+        listId: body.listId,
       });
 
     const response = await fetch(`${env.API_BASE_URL}/task/create`, {
@@ -23,6 +25,7 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         title,
         description,
+        listId
       }),
     });
 
