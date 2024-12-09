@@ -15,7 +15,11 @@ export class ListRepository implements IListRepository {
   }
 
   async list(): Promise<ListModel[]> {
-    return this.listCollection.find();
+    return this.listCollection.find({
+      relations: {
+        tasks: true,
+      },
+    });
   }
 
   async update(data: ListModel): Promise<ListModel> {
