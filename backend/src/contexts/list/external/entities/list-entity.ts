@@ -17,6 +17,9 @@ export class ListEntity implements ListModel {
   @Column()
   title: string;
 
+  @Column({ default: "" })
+  slug: string;
+
   @OneToMany(() => TaskEntity, (entity) => entity.list)
   tasks: TaskEntity[];
 

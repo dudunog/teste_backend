@@ -3,7 +3,7 @@ import { Validator } from "@shared/validations";
 
 export const makeCreateListValidationFactory = (): IValidation => {
   return new Validator({
-    required: ["title"],
-    string: ["title"],
+    required: ["title", "slug"],
+    string: ["title", "slug"],
   });
 };

@@ -3,6 +3,7 @@ import { UseCase } from "@shared/protocols";
 
 export interface ICreateListUseCaseDTO {
   title: string;
+  slug: string;
 }
 
 export type ICreateListUseCase = UseCase<ICreateListUseCaseDTO, ListModel>;
