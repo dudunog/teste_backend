@@ -14,6 +14,22 @@ export class ListRepository implements IListRepository {
     return await this.listCollection.save(insertedInvoice);
   }
 
+  async findById(id: string): Promise<ListModel> {
+    return await this.listCollection.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  async findBySlug(slug: string): Promise<ListModel> {
+    return await this.listCollection.findOne({
+      where: {
+        slug,
+      },
+    });
+  }
+
   async list(): Promise<ListModel[]> {
     return this.listCollection.find({
       relations: {

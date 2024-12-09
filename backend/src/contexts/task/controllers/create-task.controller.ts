@@ -17,11 +17,12 @@ export class CreateTaskController implements Controller {
         return badRequest(error);
       }
 
-      const { title, description } = request.body;
+      const { title, description, listId } = request.body;
 
       const result = await this.createTaskUseCase.execute({
         title,
         description,
+        listId,
       });
 
       if (result.isFailure) {
