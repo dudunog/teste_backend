@@ -20,6 +20,9 @@ export class ListEntity implements ListModel {
   @Column({ default: "" })
   slug: string;
 
+  @Column({ default: "" })
+  emoji: string;
+
   @OneToMany(() => TaskEntity, (entity) => entity.list)
   tasks: TaskEntity[];
 

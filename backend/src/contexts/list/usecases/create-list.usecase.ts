@@ -12,10 +12,12 @@ export class CreateListUseCase implements ICreateListUseCase {
   async execute({
     title,
     slug,
+    emoji,
   }: ICreateListUseCaseDTO): Promise<Result<ListModel>> {
     const list = await this.listRepository.create({
       title,
       slug,
+      emoji,
     });
     return Result.ok(list);
   }
