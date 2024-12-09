@@ -5,6 +5,7 @@ export interface ICreateListUseCaseDTO {
   title: string;
   slug: string;
   emoji: string;
+  color: string;
 }
 
 export type ICreateListUseCase = UseCase<ICreateListUseCaseDTO, ListModel>;

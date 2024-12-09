@@ -5,6 +5,7 @@ export interface ListModel {
   title: string;
   slug: string;
   emoji: string;
+  color: string;
   tasks?: TaskEntity[];
   createdAt?: Date;
   updatedAt?: Date;

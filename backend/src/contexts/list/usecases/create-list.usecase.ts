@@ -13,11 +13,13 @@ export class CreateListUseCase implements ICreateListUseCase {
     title,
     slug,
     emoji,
+    color,
   }: ICreateListUseCaseDTO): Promise<Result<ListModel>> {
     const list = await this.listRepository.create({
       title,
       slug,
       emoji,
+      color,
     });
     return Result.ok(list);
   }

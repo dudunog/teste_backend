@@ -17,12 +17,13 @@ export class CreateListController implements Controller {
         return badRequest(error);
       }
 
-      const { title, slug, emoji } = request.body;
+      const { title, slug, emoji, color } = request.body;
 
       const result = await this.createListUseCase.execute({
         title,
         slug,
         emoji,
+        color,
       });
 
       if (result.isFailure) {
