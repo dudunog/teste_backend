@@ -9,7 +9,7 @@ export async function POST(req: Request) {
       .object({
         title: z.string(),
         description: z.string(),
-        listId: z.string(),
+        listId: z.string().nullable(),
       })
       .parse({
         title: body.title,
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         title,
         description,
-        listId
+        listId,
       }),
     });
 

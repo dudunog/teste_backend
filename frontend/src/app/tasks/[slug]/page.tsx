@@ -1,6 +1,8 @@
 import { Task } from "@/app/tasks/data/task";
 import { api } from "@/data/api";
 import TasksList from "@/app/tasks/components/tasks-list";
+import { NewTaskBoxProvider } from "@/app/tasks/contexts/new-task-box-context";
+import NewTaskFloatingBox from "@/app/tasks/components/new-task-foating-box";
 import NewTaskFloatingButton from "@/app/tasks/components/new-task-floating-button";
 
 async function getTasks(slug: string): Promise<Task[]> {
@@ -22,7 +24,12 @@ export default async function Tasks({ params }: TasksProps) {
 
       <TasksList tasks={tasks} />
 
-      <NewTaskFloatingButton />
+      <NewTaskBoxProvider>
+        <div>
+          <NewTaskFloatingBox />
+          <NewTaskFloatingButton />
+        </div>
+      </NewTaskBoxProvider>
     </>
   );
 }

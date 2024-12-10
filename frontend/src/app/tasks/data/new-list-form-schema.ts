@@ -5,12 +5,5 @@ export const newListFormSchema = z.object({
     message: "O nome deve ter pelo menos 1 caractere.",
   }),
   emoji: z.string(),
-  color: z
-    .string()
-    .min(7, {
-      message: "A cor deve ter 7 caracteres.",
-    })
-    .max(7, {
-      message: "A cor deve ter 7 caracteres.",
-    }),
+  color: z.string(),
 });

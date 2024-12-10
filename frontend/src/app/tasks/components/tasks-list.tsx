@@ -30,7 +30,9 @@ interface TasksListProps {
 }
 
 export default function TasksList({ tasks }: TasksListProps) {
-  const [tasksState, setTasksState] = useState(tasks);
+  const [tasksState, setTasksState] = useState(
+    Array.isArray(tasks) ? tasks : []
+  );
   const [isDoneFilterActive, setIsDoneFilterActive] = useState(false);
   const { newTaskId } = useTasksSearch();
 
@@ -75,7 +77,11 @@ export default function TasksList({ tasks }: TasksListProps) {
   );
 
   useEffect(() => {
-    setTasksState(tasks);
+    if (Array.isArray(tasks)) {
+      setTasksState(tasks);
+    } else {
+      setTasksState([]);
+    }
   }, [tasks]);
 
   return (
@@ -92,7 +98,7 @@ export default function TasksList({ tasks }: TasksListProps) {
       )}
 
       {tasksState.length === 0 && (
-        <p className="mt-16">Nenhum tarefa cadastrada até o momento.</p>
+        <p className="mt-16">Nenhum tarefa cadastrada até o momento</p>
       )}
 
       <DndContext
@@ -108,10 +114,9 @@ export default function TasksList({ tasks }: TasksListProps) {
             <ScrollArea className="mt-2 h-[500px] rounded-2xl">
               <div className="flex flex-col gap-3 px-3 py-3">
                 {tasksState.map((task) => (
-                  <>
+                  <div key={task.id}>
                     {task.id === newTaskId ? (
                       <motion.div
-                        key={task.id}
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
@@ -120,9 +125,9 @@ export default function TasksList({ tasks }: TasksListProps) {
                         <TaskComponent data={task} />
                       </motion.div>
                     ) : (
-                      <TaskComponent key={task.id} data={task} />
+                      <TaskComponent data={task} />
                     )}
-                  </>
+                  </div>
                 ))}
               </div>
             </ScrollArea>

@@ -2,16 +2,16 @@
 
 import { parseAsString, useQueryState } from "nuqs";
 
-export default function useTasksSearch() {
-  const [newTaskId, setNewTaskId] = useQueryState(
-    "nTid",
+export default function useListsSearch() {
+  const [newListId, setNewListId] = useQueryState(
+    "nLid",
     parseAsString.withDefault("").withOptions({
       clearOnDefault: true,
     })
   );
 
   return {
-    newTaskId,
-    setNewTaskId,
+    newListId,
+    setNewListId,
   };
 }

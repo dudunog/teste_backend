@@ -4,6 +4,6 @@ import { Validator } from "@shared/validations";
 export const makeCreateTaskValidationFactory = (): IValidation => {
   return new Validator({
     required: ["title"],
-    string: ["title", "description"],
+    string: ["title"],
   });
 };

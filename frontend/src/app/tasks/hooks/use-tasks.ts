@@ -4,7 +4,7 @@ import { api } from "@/data/api";
 import { Task } from "@/app/tasks/data/task";
 import { useToast } from "@/hooks/use-toast";
 
-type CreateTaskDTO = {
+export type CreateTaskDTO = {
   title: string;
 };
 

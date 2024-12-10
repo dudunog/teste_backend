@@ -37,15 +37,17 @@ export default function RootLayout({
       >
         <AdminProvider>
           <ListsProvider>
-            <LeftSideBarServer />
+            <NuqsAdapter>
+              <LeftSideBarServer />
 
-            <LayoutClient>
-              <main className={"flex flex-col items-center w-full p-4"}>
-                <NuqsAdapter>{children}</NuqsAdapter>
-              </main>
+              <LayoutClient>
+                <main className={"flex flex-col items-center w-full p-4"}>
+                  {children}
+                </main>
 
-              <Toaster />
-            </LayoutClient>
+                <Toaster />
+              </LayoutClient>
+            </NuqsAdapter>
           </ListsProvider>
         </AdminProvider>
       </body>

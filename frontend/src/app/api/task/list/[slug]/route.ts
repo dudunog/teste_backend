@@ -11,15 +11,19 @@ export async function GET(req: Request, { params }: ParamsProps) {
   const { slug: listIdParam } = await params;
 
   try {
-    const { listId } = z
+    const { slug } = z
       .object({
-        listId: z.string(),
+        slug: z.string(),
       })
       .parse({
-        listId: listIdParam,
+        slug: listIdParam,
       });
 
-    const response = await fetch(`${env.API_BASE_URL}/tasks?slug=${listId}`);
+    const validSlug = slug !== "no-list";
+
+    const response = await fetch(
+      `${env.API_BASE_URL}/tasks${validSlug ? `?slug=${slug}` : ""}`
+    );
 
     const tasks = await response.json();
 

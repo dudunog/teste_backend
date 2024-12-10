@@ -4,8 +4,11 @@ import { api } from "@/data/api";
 import { List } from "@/app/tasks/data/list";
 import { useToast } from "@/hooks/use-toast";
 
-type CreateListDTO = {
+export type CreateListDTO = {
   title: string;
+  slug: string;
+  emoji: string;
+  color: string;
 };
 
 type UpdateListDTO = List;

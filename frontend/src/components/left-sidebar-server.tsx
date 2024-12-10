@@ -3,7 +3,11 @@ import { api } from "@/data/api";
 import LeftSideBar from "./left-sidebar";
 
 async function getLists(): Promise<List[]> {
-  const response = await api("/list/list");
+  const response = await api("/list/list", {
+    next: {
+      tags: ["lists"],
+    },
+  });
   return await response.json();
 }
 
