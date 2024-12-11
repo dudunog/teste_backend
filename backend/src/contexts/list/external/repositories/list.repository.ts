@@ -10,8 +10,8 @@ export class ListRepository implements IListRepository {
   ) {}
 
   async create(data: CreationModel<ListModel>): Promise<ListModel> {
-    const insertedInvoice = this.listCollection.create(data);
-    return await this.listCollection.save(insertedInvoice);
+    const insertedTask = this.listCollection.create(data);
+    return await this.listCollection.save(insertedTask);
   }
 
   async findById(id: string): Promise<ListModel> {
@@ -44,7 +44,7 @@ export class ListRepository implements IListRepository {
     });
   }
 
-  async delete(data: ListModel): Promise<void> {
-    await this.listCollection.delete(data.id);
+  async delete(id: string): Promise<void> {
+    await this.listCollection.delete(id);
   }
 }

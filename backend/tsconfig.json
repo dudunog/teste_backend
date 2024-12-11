@@ -25,6 +25,7 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "typeRoots": ["./src/main/types", "./node_modules/@types"],
+    "types": ["vitest/globals"]
   },
-  "include": ["src/**/*", "jest.config.js"]
+  "include": ["src/**/*", "vitest.config.js"]
 }

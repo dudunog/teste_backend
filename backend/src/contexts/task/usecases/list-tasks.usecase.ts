@@ -14,12 +14,7 @@ export class ListTasksUseCase implements IListTasksUseCase {
     listId,
   }: IListTasksUseCaseDTO): Promise<Result<CreationModel<TaskModel[]>>> {
     const tasks = await this.taskRepository.list({
-      where: {
-        listId,
-      },
-      order: {
-        completed: "DESC",
-      },
+      listId,
     });
 
     return Result.ok(tasks);

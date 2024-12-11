@@ -7,7 +7,7 @@ import { GetListBySlugUseCase } from "@contexts/list/usecases/get-list-by-slug.u
 export class ListTasksController implements Controller {
   constructor(
     private readonly listTasksUseCase: IListTasksUseCase,
-    private readonly getListUseCase: GetListBySlugUseCase,
+    private readonly getListBySlugUseCase: GetListBySlugUseCase,
     private readonly validation: IValidation
   ) {}
 
@@ -21,7 +21,7 @@ export class ListTasksController implements Controller {
 
       const { slug } = request.query;
 
-      const listResult = await this.getListUseCase.execute({
+      const listResult = await this.getListBySlugUseCase.execute({
         slug,
       });
 

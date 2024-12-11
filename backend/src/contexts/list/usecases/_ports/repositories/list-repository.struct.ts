@@ -7,5 +7,5 @@ export interface IListRepository {
   findBySlug(slug: string): Promise<ListModel>;
   list(): Promise<ListModel[]>;
   update(data: ListModel): Promise<ListModel>;
-  delete(data: ListModel): Promise<void>;
+  delete(id: string): Promise<void>;
 }

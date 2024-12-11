@@ -52,8 +52,6 @@ export const adaptRoute = (
       }
     }
 
-    httpRequest.account = request.account;
-
     if (errorOfMiddleware) {
       return adaptResponse(response, responseMiddleware);
     }

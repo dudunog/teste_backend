@@ -9,15 +9,15 @@ export class GetListController implements Controller {
     try {
       const { id } = request.params ?? {};
 
-      const userResult = await this.getListUseCase.execute({
+      const result = await this.getListUseCase.execute({
         id,
       });
 
-      if (userResult.isFailure) {
-        return badRequest(userResult.error);
+      if (result.isFailure) {
+        return badRequest(result.error);
       }
 
-      return ok(userResult.getValue());
+      return ok(result.getValue());
     } catch (error) {
       return serverError(error);
     }

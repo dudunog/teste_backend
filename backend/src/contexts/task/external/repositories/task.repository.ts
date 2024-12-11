@@ -1,9 +1,11 @@
 import { AppDataSource } from "@main/config/database/data-source";
-import { ITaskRepository } from "@contexts/task/usecases/_ports/repositories/task-repository.struct";
+import {
+  ITaskListParams,
+  ITaskRepository,
+} from "@contexts/task/usecases/_ports/repositories/task-repository.struct";
 import { CreationModel } from "@shared/protocols/creation-model";
 import { TaskModel } from "../../domain/models/task-model.struct";
 import { TaskEntity } from "../entities/task-entity";
-import { FindManyOptions } from "typeorm";
 
 export class TaskRepository implements ITaskRepository {
   constructor(
@@ -11,12 +13,19 @@ export class TaskRepository implements ITaskRepository {
   ) {}
 
   async create(data: CreationModel<TaskModel>): Promise<TaskModel> {
-    const insertedInvoice = this.taskCollection.create(data);
-    return await this.taskCollection.save(insertedInvoice);
+    const insertedTask = this.taskCollection.create(data);
+    return await this.taskCollection.save(insertedTask);
   }
 
-  async list(options: FindManyOptions<TaskEntity>): Promise<TaskModel[]> {
-    return this.taskCollection.find(options);
+  async list({ listId }: ITaskListParams): Promise<TaskModel[]> {
+    return this.taskCollection.find({
+      where: {
+        listId,
+      },
+      order: {
+        completed: "DESC",
+      },
+    });
   }
 
   async update(data: TaskModel): Promise<TaskModel> {
