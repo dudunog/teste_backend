@@ -41,7 +41,7 @@ describe("ListTasksUseCase", () => {
 
     spy.mockReturnValue(promisify(fakeTasks));
 
-    const result = await sut.execute({ listId: "any_list_idany_list_id" });
+    const result = await sut.execute({ listId: "any_list_id" });
 
     expect(result.isFailure).toBe(false);
     expect(result.getValue()).toEqual(fakeTasks);

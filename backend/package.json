@@ -14,7 +14,8 @@
     "lint": "eslint . --ext .ts --fix",
     "prepare": "husky install",
     "typeorm": "typeorm-ts-node-commonjs",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "test:watch": "vitest"
   },
   "husky": {
     "hooks": {

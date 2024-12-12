@@ -67,7 +67,7 @@ export class ListRepositoryInMemory implements IListRepository {
   }
 
   delete(id: string): Promise<void> {
-    this.lists = this.lists.filter((task) => task.id !== id);
+    this.lists = this.lists.filter((list) => list.id !== id);
     return new Promise((resolve) => resolve());
   }
 }
